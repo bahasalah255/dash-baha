@@ -1,0 +1,1 @@
+<img src="{{ asset('build/assets/image3.png') }}" height='100px' width='600px' alt="">
