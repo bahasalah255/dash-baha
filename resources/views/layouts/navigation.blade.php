@@ -12,10 +12,13 @@
             <x-nav-link :href="route('dashboard')">
                 Dashboard
             </x-nav-link>
-
-            <x-nav-link :href="route('profile.edit')">
+             <x-nav-link :href="route('profile.edit')">
                 Profile
             </x-nav-link>
+            <x-nav-link :href="route('clients')">
+                clients
+            </x-nav-link>
+            
 
         </div>
 

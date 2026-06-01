@@ -12,7 +12,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        $clients = Client::All();
+        return view('clients', compact('clients'));
     }
 
     /**
@@ -28,7 +29,24 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      
+         
+        $request->validate([
+            'name' => 'required',
+             'email' => 'required',
+            'phone' => 'required',
+            'company' => 'required',
+            'notes' => 'required'
+
+        ]);
+        Client::create($request->only([
+            'name',
+            'email',
+            'phone',
+            'company',
+            'notes'
+        ]));
+        return redirect()->route('clients');
     }
 
     /**

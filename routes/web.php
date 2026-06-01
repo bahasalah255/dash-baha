@@ -1,12 +1,18 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('clients', [ClientController::class, 'index'])->name('clients');
+Route::get('add', function (){
+    return view('client-form');
+})->name('add');
+Route::post('store' , [ClientController::class , 'store'])->name('client.store');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
