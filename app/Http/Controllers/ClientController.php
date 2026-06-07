@@ -62,7 +62,7 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        //
+        return view('modifier' , compact('client'));
     }
 
     /**
@@ -70,14 +70,24 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        //
+        $client->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'company' => $request->company,
+            'notes' => $request->notes
+        ]);
+        return redirect()->route('clients');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Client $client)
+    public function delete(Client $client)
     {
-        //
+        if($client){
+            $client->delete();
+        }
+        return redirect()->back();
     }
 }

@@ -11,6 +11,7 @@
             <th>email</th>
             <th>phone</th>
             <th>company</th>
+            <td>Actions</td>
         </thead>
         <tbody>
             @foreach($clients as $client)
@@ -19,6 +20,13 @@
             <td>{{  $client->email  }}</td>
             <td>{{  $client->phone  }}</td>
             <td>{{  $client->company  }}</td>
+            <td><form action="{{route('delete' , $client->id)}}" method="POST">
+                @method('DELETE')
+                <button type="submit">delete</button>
+            </form>
+            
+                <a href="{{route('edit', $client->id )}}">modifier</a>
+               </td>
 </tr>
 @endforeach
         </tbody>

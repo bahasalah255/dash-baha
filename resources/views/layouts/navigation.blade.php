@@ -18,6 +18,9 @@
             <x-nav-link :href="route('clients')">
                 clients
             </x-nav-link>
+             <x-nav-link :href="route('projects')">
+                Projects
+            </x-nav-link>
             
 
         </div>
