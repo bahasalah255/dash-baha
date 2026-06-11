@@ -18,7 +18,7 @@ class Project extends Model
         'status'
     ];
     public function client(){
-        return $this->belongTo(Client::class);
+        return $this->belongsTo(Client::class);
     }
     public function payments(){
         return $this->hasMany(Payment::class);

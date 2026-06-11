@@ -15,7 +15,12 @@ Route::get('projects', [ProjectController::class, 'index'])->name('projects');
 Route::get('add', function (){
     return view('client-form');
 })->name('add');
-Route::post('store' , [ClientController::class , 'store'])->name('client.store');
+Route::get('add-project', function (){
+    $clients = \App\Models\Client::all();
+    return view('project-form', compact('clients'));
+})->name('add-project');
+Route::post('clients/store', [ClientController::class, 'store'])->name('client.store');
+Route::post('projects/store', [ProjectController::class, 'store'])->name('project.store');
 Route::delete('/clients/delete/{client}', [ClientController::class, 'delete'])->name('delete');
 Route::get('/modifier/{client}', [ClientController::class, 'edit'])->name('edit');
 Route::put('/modifier/{client}',  [ClientController::class, 'update'])->name('clients.update');

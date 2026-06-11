@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\Client;
 use Illuminate\Http\Request;
 
 
@@ -31,7 +32,17 @@ return view('project', compact('projects'));
      */
     public function store(Request $request)
     {
-        //
+       $request->validate([
+        "title"       => "required|string|max:255",
+        "description" => "required|string",
+        "stack"       => "required|string",
+        "deadline"    => "required|date",
+        "budget"      => "required|numeric",
+        "status"      => "required|string",
+        "client_id"      => "required|integer|exists:clients,id"
+    ]);
+        Project::create($request->all());
+        return redirect()->route('projects');
     }
 
     /**
